@@ -1,6 +1,5 @@
 """pprintjson test module"""
 
-import filecmp
 import unittest
 import os
 from unittest.mock import patch

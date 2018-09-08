@@ -1,7 +1,7 @@
 """pprintjson module"""
 
-from sys import stdout
-from json import dumps
+from sys import stdout, argv
+from json import dumps, loads
 from pygments import highlight
 from pygments.lexers import JsonLexer
 from pygments.formatters import TerminalFormatter
@@ -13,3 +13,7 @@ def pprintjson(obj: Dict, indent: int = 4, end: str = "\n", file: IO = stdout, f
     if file.isatty():
         json = highlight(json, JsonLexer(), TerminalFormatter())
     print(json, end=end, file=file, flush=flush)
+
+
+if __name__ == '__main__':
+    pprintjson(loads(argv[1]))

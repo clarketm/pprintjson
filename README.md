@@ -18,7 +18,7 @@ $ pip install pprintjson
 from pprintjson import pprintjson as ppjson
 
 # 2. pretty print JSON.
-obj = { "a": 1 }
+obj = { "a": 1, "b": "string", "c": True }
 
 ppjson(obj)
 ```

@@ -5,13 +5,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pprintjson",
-    version="0.0.2",
+    version="0.0.3",
     author="Travis Clarke",
     author_email="travis.m.clarke@gmail.com",
     description="A json pretty printer for python",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/clarketm/pprintjson",
+    install_requires = ["pygments"],
     packages=setuptools.find_packages(),
     classifiers=(
         "Programming Language :: Python :: 3",

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pprintjson",
-    version="0.0.3",
+    version="0.0.4",
     author="Travis Clarke",
     author_email="travis.m.clarke@gmail.com",
     description="A json pretty printer for python",

@@ -1,9 +1,24 @@
 """pprintjson test module"""
-
-import unittest
 import os
+import sys
+import unittest
+from contextlib import contextmanager
+from io import StringIO
+from json import dumps
 from unittest.mock import patch
+
 from pprintjson import pprintjson as ppjson
+
+
+@contextmanager
+def captured_output():
+    new_out, new_err = StringIO(), StringIO()
+    old_out, old_err = sys.stdout, sys.stderr
+    try:
+        sys.stdout, sys.stderr = new_out, new_err
+        yield sys.stdout, sys.stderr
+    finally:
+        sys.stdout, sys.stderr = old_out, old_err
 
 
 class test_pprintjson(unittest.TestCase):
@@ -12,14 +27,20 @@ class test_pprintjson(unittest.TestCase):
     def test_example1(self):
         obj = {"a": 1}
 
-        with open('test1.json', 'a+') as f:
+        with open("test1.json", "a+") as f:
             ppjson(obj, file=f)
             f.seek(0)
             result = f.read()
             self.assertTrue(obj, result)
 
-    @patch('pprintjson.pprintjson')
-    def test_example2(self, mock_ppjson):
+    def test_example2(self):
+        obj = {"a": 1}
+        with captured_output() as (out, err):
+            ppjson(obj, file=sys.stdout)
+            self.assertEqual(out.getvalue(), dumps(obj, indent=4) + "\n")
+
+    @patch("pprintjson.pprintjson")
+    def test_example3(self, mock_ppjson):
         obj = {"a": 1}
         mock_ppjson(obj)
 
@@ -28,8 +49,11 @@ class test_pprintjson(unittest.TestCase):
         self.assertEqual(mock_ppjson.call_count, 1)
 
     def tearDown(self):
-        os.remove('test1.json')
+        try:
+            os.remove("test1.json")
+        except OSError:
+            pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

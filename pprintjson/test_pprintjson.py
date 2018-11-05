@@ -24,7 +24,7 @@ def captured_output():
 class test_pprintjson(unittest.TestCase):
     """pprintjson function tests."""
 
-    def test_example1(self):
+    def test_should_pprintjson_to_a_specified_file(self):
         obj = {"a": 1}
 
         with open("test1.json", "a+") as f:
@@ -33,14 +33,29 @@ class test_pprintjson(unittest.TestCase):
             result = f.read()
             self.assertTrue(obj, result)
 
-    def test_example2(self):
+    def test_should_pprintjson_to_a_tty(self):
         obj = {"a": 1}
         with captured_output() as (out, err):
             ppjson(obj, file=sys.stdout)
             self.assertEqual(out.getvalue(), dumps(obj, indent=4) + "\n")
 
+    def test_should_not_return_output_if_file_is_none(self):
+        obj = {"a": 1}
+        with captured_output() as (out, err):
+            ppjson(obj, file=None)
+            self.assertEqual(out.getvalue(), "")
+
+    def test_should_catch_error_if_file_is_not_atty(self):
+        obj = {"a": 1}
+        with captured_output() as (out, err):
+            with self.assertRaises(Exception) as f:
+                ppjson(obj, file="string")
+
+            self.assertTrue(str(f.exception))
+            self.assertEqual(out.getvalue(), "")
+
     @patch("pprintjson.pprintjson")
-    def test_example3(self, mock_ppjson):
+    def test_should_pprintjson_once_when_called(self, mock_ppjson):
         obj = {"a": 1}
         mock_ppjson(obj)
 

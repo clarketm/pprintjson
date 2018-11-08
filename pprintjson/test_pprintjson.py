@@ -54,6 +54,17 @@ class test_pprintjson(unittest.TestCase):
             self.assertTrue(str(f.exception))
             self.assertEqual(out.getvalue(), "")
 
+    def test_should_pprintjson_variable_arguments(self):
+        obj1 = {"a": 1}
+        obj2 = {"b": 2}
+
+        with captured_output() as (out, err):
+            ppjson(obj1, obj2, file=sys.stdout)
+            self.assertEqual(
+                out.getvalue(),
+                dumps(obj1, indent=4) + " " + dumps(obj2, indent=4) + "\n",
+            )
+
     @patch("pprintjson.pprintjson")
     def test_should_pprintjson_once_when_called(self, mock_ppjson):
         obj = {"a": 1}

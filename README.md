@@ -23,7 +23,7 @@ obj = { "a": 1, "b": "string", "c": True }
 ppjson(obj)
 ```
 
-![stdout](pprintjson.png)
+![stdout](https://raw.githubusercontent.com/clarketm/pprintjson/master/pprintjson.png)
 
 ## License
 

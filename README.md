@@ -1,6 +1,7 @@
 # [pprintjson](https://pypi.org/project/pprintjson/)
 
 [![PyPi release](https://img.shields.io/pypi/v/pprintjson.svg)](https://pypi.org/project/pprintjson/)
+[![Downloads](https://pepy.tech/badge/pprintjson)](https://pepy.tech/project/pprintjson)
 
 A json pretty printer for Python 🐍.
 

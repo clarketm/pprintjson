@@ -31,6 +31,36 @@ optional arguments:
 
 ```
 
+### Script
+
+Pretty print JSON from a **file** using the `pprintjson` CLI.
+
+```bash
+$ pprintjson "./path/to/file.json"
+```
+
+Pretty print JSON from a **string** using the `pprintjson` CLI.
+
+```bash
+$ pprintjson -s '{ "a": 1, "b": "string", "c": true }'
+```
+
+Pretty print JSON from a **string** with an *indent* of **1**.
+
+```bash
+$ pprintjson -s '{ "a": 1, "b": "string", "c": true }' -i 1
+```
+
+Pretty print JSON from a **string** and save *output* to a file **output.json**.
+
+```bash
+$ pprintjson -s '{ "a": 1, "b": "string", "c": true }' -o ./output.json
+```
+
+### Module
+
+Pretty print JSON from a **dict** using the `pprintjson` module.
+
 ```python
 
 # 1. import the "pprintjson" function.

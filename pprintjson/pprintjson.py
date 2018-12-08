@@ -10,7 +10,7 @@ from pygments import highlight
 from pygments.formatters import TerminalFormatter
 from pygments.lexers import JsonLexer
 
-__VERSION__ = "1.1.0"
+__VERSION__ = "1.1.1"
 
 
 def pprintjson(
@@ -22,8 +22,11 @@ def pprintjson(
 ) -> None:
     file = stdout if file is None else file
     json = [dumps(o, indent=indent) for o in obj]
-    if file.isatty():
-        json = [highlight(j, JsonLexer(), TerminalFormatter()) for j in json]
+    try:
+        if file.isatty():
+            json = [highlight(j, JsonLexer(), TerminalFormatter()) for j in json]
+    except AttributeError:
+        pass
     print(*json, end=end, file=file, flush=flush)
 
 
@@ -47,7 +50,7 @@ def cli():
     parser.add_argument(
         "-o",
         "--output",
-        type=int,
+        type=str,
         metavar="file",
         help="write  output to <file> instead of stdout (default: stdout)",
     )
@@ -65,11 +68,12 @@ def cli():
         default=stdin,
     )
     args = parser.parse_args()
+    file = open(args.output, "w") if args.output else None
 
     if args.string is not None:
-        pprintjson(loads(args.string), indent=args.indent)
+        pprintjson(loads(args.string), indent=args.indent, file=file)
     else:
-        pprintjson(load(args.file))
+        pprintjson(load(args.file), indent=args.indent, file=file)
 
 
 if __name__ == "__main__":

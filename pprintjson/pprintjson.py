@@ -55,7 +55,11 @@ def cli():
         help="write  output to <file> instead of stdout (default: stdout)",
     )
     parser.add_argument(
-        "-s", "--string", type=str, metavar="cmd", help="string to json pretty-print"
+        "-s",
+        "--string",
+        type=str,
+        metavar="str",
+        help="json <str> to pretty-print",
     )
     parser.add_argument(
         "-v", "--version", action="version", version=f"%(prog)s {__VERSION__}"
@@ -64,7 +68,7 @@ def cli():
         "file",
         nargs="?",
         type=argparse.FileType("r"),
-        help="file to json pretty-print",
+        help="json <file> to pretty-print",
         default=stdin,
     )
     args = parser.parse_args()

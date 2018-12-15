@@ -10,7 +10,7 @@ from pygments import highlight
 from pygments.formatters import TerminalFormatter
 from pygments.lexers import JsonLexer
 
-__VERSION__ = "1.1.3"
+__VERSION__ = "1.1.4"
 
 
 def pprintjson(

@@ -15,18 +15,18 @@ $ pip install pprintjson
 
 ```text
 
-usage: pprintjson.py [-h] [-i num] [-o file] [-s cmd] [-v] [file]
+usage: pprintjson.py [-h] [-i num] [-o file] [-s str] [-v] [file]
 
 A pretty-printing function for json.
 
 positional arguments:
-  file                    file to json pretty-print
+  file                    json <file> to pretty-print
 
 optional arguments:
   -h, --help              show this help message and exit
   -i num, --indent num    indent <num> number of spaces at each level (default: 4)
   -o file, --output file  write output to <file> instead of stdout (default: stdout)
-  -s cmd, --string cmd    string to json pretty-print
+  -s str, --string str    json <str> to pretty-print
   -v, --version           show program's version number and exit
 
 ```

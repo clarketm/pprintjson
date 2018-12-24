@@ -1,3 +1,2 @@
 include LICENSE README.md
-exclude */test_*
-    
+global-exclude *test_*.py

@@ -15,7 +15,7 @@ $ pip install pprintjson
 
 ```text
 
-usage: pprintjson.py [-h] [-i num] [-o file] [-s str] [-v] [file]
+usage: pprintjson.py [-h] [-i num] [-o file] [-c cmd] [-v] [file]
 
 A pretty-printing function for json.
 
@@ -26,7 +26,7 @@ optional arguments:
   -h, --help              show this help message and exit
   -i num, --indent num    indent <num> number of spaces at each level (default: 4)
   -o file, --output file  write output to <file> instead of stdout (default: stdout)
-  -s str, --string str    json <str> to pretty-print
+  -c cmd, --command cmd   json <str> to pretty-print
   -v, --version           show program's version number and exit
 
 ```
@@ -42,19 +42,19 @@ $ pprintjson "./path/to/file.json"
 Pretty print JSON from a **string** using the `pprintjson` CLI.
 
 ```bash
-$ pprintjson -s '{ "a": 1, "b": "string", "c": true }'
+$ pprintjson -c '{ "a": 1, "b": "string", "c": true }'
 ```
 
 Pretty print JSON from a **string** with an *indent* of **1**.
 
 ```bash
-$ pprintjson -s '{ "a": 1, "b": "string", "c": true }' -i 1
+$ pprintjson -c '{ "a": 1, "b": "string", "c": true }' -i 1
 ```
 
 Pretty print JSON from a **string** and save *output* to a file **output.json**.
 
 ```bash
-$ pprintjson -s '{ "a": 1, "b": "string", "c": true }' -o ./output.json
+$ pprintjson -c '{ "a": 1, "b": "string", "c": true }' -o ./output.json
 ```
 
 ### Module

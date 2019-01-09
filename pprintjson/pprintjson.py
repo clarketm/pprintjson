@@ -10,7 +10,7 @@ from pygments import highlight
 from pygments.formatters import TerminalFormatter
 from pygments.lexers import JsonLexer
 
-__VERSION__ = "1.2.0"
+__VERSION__ = "1.2.1"
 
 
 def pprintjson(
@@ -70,8 +70,8 @@ def cli():
     args = parser.parse_args()
     file = open(args.output, "w") if args.output else None
 
-    if args.string is not None:
-        pprintjson(loads(args.string), indent=args.indent, file=file)
+    if args.command is not None:
+        pprintjson(loads(args.command), indent=args.indent, file=file)
     else:
         pprintjson(load(args.file), indent=args.indent, file=file)
 

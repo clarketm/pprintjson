@@ -154,7 +154,13 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "pprintjson.tex", "pprintjson Documentation", "Travis Clarke", "manual")
+    (
+        master_doc,
+        "pprintjson.tex",
+        "pprintjson Documentation",
+        "Travis Clarke",
+        "manual",
+    )
 ]
 
 

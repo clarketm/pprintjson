@@ -40,7 +40,7 @@ ifdef version
 	-H "Authorization: token ${GITHUB_ACCESS_TOKEN}" \
 	-H "Content-Type: application/json" \
 	"https://api.github.com/repos/clarketm/pprintjson/releases" \
-	--data "{\"tag_name\": \"v${version}\",\"target_commitish\": \"master\",\"name\": \"${version}\",\"draft\": false,\"prerelease\": false}"
+	--data "{\"tag_name\": \"v${version}\",\"target_commitish\": \"master\",\"name\": \"v${version}\",\"draft\": false,\"prerelease\": false}"
 endif
 
 .PHONY: upload

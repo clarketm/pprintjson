@@ -2,6 +2,7 @@
 
 [![PyPi release](https://img.shields.io/pypi/v/pprintjson.svg)](https://pypi.org/project/pprintjson/)
 [![Downloads](https://pepy.tech/badge/pprintjson)](https://pepy.tech/project/pprintjson)
+[![Documentation Status](https://readthedocs.org/projects/pprintjson/badge/?version=latest)](https://pprintjson.readthedocs.io/en/latest/?badge=latest)
 
 A json pretty printer for Python 🐍.
 

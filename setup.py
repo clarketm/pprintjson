@@ -1,13 +1,13 @@
 import setuptools, os
 
-from pprintjson.pprintjson import __VERSION__
+from pprintjson import __version__
 
 with open(f"{os.path.abspath(os.path.dirname(__file__))}/README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="pprintjson",
-    version=__VERSION__,
+    version=__version__,
     author="Travis Clarke",
     author_email="travis.m.clarke@gmail.com",
     description="A json pretty printer for python",

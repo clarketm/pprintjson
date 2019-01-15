@@ -10,7 +10,7 @@ from pygments import highlight
 from pygments.formatters import TerminalFormatter
 from pygments.lexers import JsonLexer
 
-__VERSION__ = "1.2.1"
+from pprintjson import __version__
 
 
 def pprintjson(
@@ -58,7 +58,7 @@ def cli():
         "-c", "--command", type=str, metavar="cmd", help="json <str> to pretty-print"
     )
     parser.add_argument(
-        "-v", "--version", action="version", version=f"%(prog)s {__VERSION__}"
+        "-v", "--version", action="version", version=f"%(prog)s {__version__}"
     )
     parser.add_argument(
         "file",

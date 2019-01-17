@@ -20,6 +20,13 @@ def pprintjson(
     file: IO = None,
     flush: bool = False,
 ) -> None:
+    """
+    :param *obj: Union[Dict, List]:
+    :param indent: int:  (Default value = 4)
+    :param end: str:  (Default value = "\n")
+    :param file: IO:  (Default value = None)
+    :param flush: bool:  (Default value = False)
+    """
     file = stdout if file is None else file
     json = [dumps(o, indent=indent) for o in obj]
     try:

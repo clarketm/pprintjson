@@ -1,4 +1,5 @@
-version=$(shell python -c 'import sys, os; sys.path.insert(0, os.path.abspath(".")); print(__import__("pprintjson").__version__)')
+project:=pprintjson
+version:=$(shell python -c 'import sys, os; sys.path.insert(0, os.path.abspath(".")); print(__import__("${project}").__version__)')
 
 .PHONY: list
 list help:
@@ -43,7 +44,7 @@ ifdef version
 	curl -XPOST \
 	-H "Authorization: token ${GITHUB_ACCESS_TOKEN}" \
 	-H "Content-Type: application/json" \
-	"https://api.github.com/repos/clarketm/pprintjson/releases" \
+	"https://api.github.com/repos/clarketm/${project}/releases" \
 	--data "{\"tag_name\": \"v${version}\",\"target_commitish\": \"master\",\"name\": \"v${version}\",\"draft\": false,\"prerelease\": false}"
 endif
 

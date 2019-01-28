@@ -42,6 +42,12 @@ Pretty print JSON from a **file** using the `pprintjson` CLI.
 $ pprintjson "./path/to/file.json"
 ```
 
+Pretty print JSON from a **stdin** using the `pprintjson` CLI.
+
+```bash
+$ echo '{ "a": 1, "b": "string", "c": true }' | pprintjson
+```
+
 Pretty print JSON from a **string** using the `pprintjson` CLI.
 
 ```bash

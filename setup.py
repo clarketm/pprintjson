@@ -1,9 +1,19 @@
+import re
+
 import setuptools, os
 
-from pprintjson import __version__
 
-with open(f"{os.path.abspath(os.path.dirname(__file__))}/README.md", "r") as fh:
-    long_description = fh.read()
+def open_local(paths, mode="r", encoding="utf8"):
+    path = os.path.join(os.path.abspath(os.path.dirname(__file__)), *paths)
+    return open(path, mode=mode, encoding=encoding)
+
+
+# from pprintjson import __version__
+with open_local(["pprintjson", "__init__.py"]) as f:
+    version = re.search(r"__version__ = [\"'](\d+\.\d+\.\d+)[\"']", f.read()).group(1)
+
+with open_local(["README.md"]) as f:
+    long_description = f.read()
 
 install_requires = ["pygments>=1.6"]
 
@@ -12,7 +22,7 @@ extras_require = {"simplejson": ["simplejson>=2.0.9"]}
 
 setuptools.setup(
     name="pprintjson",
-    version=__version__,
+    version=version,
     author="Travis Clarke",
     author_email="travis.m.clarke@gmail.com",
     description="A json pretty printer for python",

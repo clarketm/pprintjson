@@ -2,7 +2,7 @@
 A pretty-printing function for json.
 """
 
-from json import dumps, loads, load
+from simplejson import dumps, loads, load
 from sys import stdin, stdout
 from typing import Dict, IO, List, Union
 

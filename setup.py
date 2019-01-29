@@ -14,7 +14,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/clarketm/pprintjson",
-    install_requires=["pygments"],
+    install_requires=["pygments", "simplejson"],
     packages=setuptools.find_packages(),
     entry_points={"console_scripts": ["pprintjson=pprintjson.pprintjson:cli"]},
     classifiers=(

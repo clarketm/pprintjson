@@ -10,8 +10,15 @@ A json pretty printer for Python 🐍.
 
 ## Installation
 
+Install with the standard [`json`](https://docs.python.org/3/library/json.html) JSON encoder
+
 ```bash
 $ pip install pprintjson
+```
+
+Install with the premier [`simplejson`](https://simplejson.readthedocs.io/en/latest/) JSON encoder
+```bash
+$ pip install pprintjson[simplejson]
 ```
 
 ## Usage

@@ -2,15 +2,6 @@
 A pretty-printing function for json.
 """
 
-# try:
-#     from pkg_resources import require, UnknownExtra, DistributionNotFound
-#
-#     require("pprintjson[simplejson]")
-# except (DistributionNotFound, UnknownExtra):
-#     from json import dumps, loads, load
-# else:
-#     from simplejson import dumps, loads, load
-
 try:
     from simplejson import dumps, loads, load
 except ImportError:

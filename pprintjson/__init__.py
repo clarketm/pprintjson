@@ -1,5 +1,2 @@
-__version__ = "1.3.0"
-
-from pprintjson.pprintjson import pprintjson, cli
-
+__version__ = "1.4.0"
 __all__ = ["pprintjson"]

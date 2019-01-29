@@ -5,9 +5,9 @@ from pprintjson import __version__
 with open(f"{os.path.abspath(os.path.dirname(__file__))}/README.md", "r") as fh:
     long_description = fh.read()
 
-install_requires = ["pygments"]
+install_requires = ["pygments>=1.6"]
 
-extras_require = {"simplejson": ["simplejson"]}
+extras_require = {"simplejson": ["simplejson>=2.0.9"]}
 
 
 setuptools.setup(

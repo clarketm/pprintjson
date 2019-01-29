@@ -2,7 +2,20 @@
 A pretty-printing function for json.
 """
 
-from simplejson import dumps, loads, load
+# try:
+#     from pkg_resources import require, UnknownExtra, DistributionNotFound
+#
+#     require("pprintjson[simplejson]")
+# except (DistributionNotFound, UnknownExtra):
+#     from json import dumps, loads, load
+# else:
+#     from simplejson import dumps, loads, load
+
+try:
+    from simplejson import dumps, loads, load
+except ImportError:
+    from json import dumps, loads, load
+
 from sys import stdin, stdout
 from typing import Dict, IO, List, Union
 

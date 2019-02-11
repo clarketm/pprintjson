@@ -1,7 +1,7 @@
 # [pprintjson](https://pprintjson.readthedocs.io/en/latest/)
 
 [![PyPi release](https://img.shields.io/pypi/v/pprintjson.svg)](https://pypi.org/project/pprintjson/)
-[![PyPi versions](https://img.shields.io/pypi/pyversions/pprintjson.svg?style=flat)](https://pypi.org/project/pprintjson/)
+[![PyPi versions](https://img.shields.io/pypi/pyversions/pprintjson.svg)](https://pypi.org/project/pprintjson/)
 [![Downloads](https://pepy.tech/badge/pprintjson)](https://pepy.tech/project/pprintjson)
 [![Documentation Status](https://readthedocs.org/projects/pprintjson/badge/?version=latest)](https://pprintjson.readthedocs.io/en/latest/?badge=latest)
 

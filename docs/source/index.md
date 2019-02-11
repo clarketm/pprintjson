@@ -13,6 +13,9 @@ Version |version|
 .. image:: https://img.shields.io/pypi/v/pprintjson.svg
     :target: https://pypi.org/project/pprintjson/
 
+.. image:: https://img.shields.io/pypi/pyversions/pprintjson.svg
+    :target: https://pypi.org/project/pprintjson/
+
 .. image:: https://pepy.tech/badge/pprintjson
     :target: https://pepy.tech/project/pprintjson
     

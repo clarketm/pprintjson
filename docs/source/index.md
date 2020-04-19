@@ -25,8 +25,15 @@ Version |version|
 
 ## Installation
 
+Install with the standard [`json`](https://docs.python.org/3/library/json.html) JSON encoder
+
 ```bash
 $ pip install pprintjson
+```
+
+Install with the premier [`simplejson`](https://simplejson.readthedocs.io/en/latest/) JSON encoder
+```bash
+$ pip install pprintjson[simplejson]
 ```
 
 ## Usage
@@ -44,7 +51,7 @@ optional arguments:
   -h, --help              show this help message and exit
   -i num, --indent num    indent <num> number of spaces at each level (default: 4)
   -o file, --output file  write output to <file> instead of stdout (default: stdout)
-  -c cmd, --command cmd   json <str> to pretty-print
+  -c cmd, --command cmd   json <cmd> to pretty-print
   -v, --version           show program's version number and exit
 
 ```
@@ -55,6 +62,12 @@ Pretty print JSON from a **file** using the `pprintjson` CLI.
 
 ```bash
 $ pprintjson "./path/to/file.json"
+```
+
+Pretty print JSON from a **stdin** using the `pprintjson` CLI.
+
+```bash
+$ echo '{ "a": 1, "b": "string", "c": true }' | pprintjson
 ```
 
 Pretty print JSON from a **string** using the `pprintjson` CLI.

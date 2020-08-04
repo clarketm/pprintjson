@@ -1,6 +1,7 @@
+import os
 import re
 
-import setuptools, os
+import setuptools
 
 
 def open_local(paths, mode="r", encoding="utf8"):
@@ -15,10 +16,11 @@ with open_local(["pprintjson", "__init__.py"]) as f:
 with open_local(["README.md"]) as f:
     long_description = f.read()
 
+setup_requires = ["setuptools>=38.6.0"]
+
 install_requires = ["pygments>=1.6"]
 
 extras_require = {"simplejson": ["simplejson>=2.0.9"]}
-
 
 setuptools.setup(
     name="pprintjson",
@@ -30,6 +32,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/clarketm/pprintjson",
     python_requires=">=3.6",
+    setup_requires=setup_requires,
     install_requires=install_requires,
     extras_require=extras_require,
     packages=setuptools.find_packages(),

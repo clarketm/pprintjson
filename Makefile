@@ -1,4 +1,5 @@
 PYTHON := python
+module:=pprintjson
 project:=pprintjson
 version:=$(shell $(PYTHON) -c 'import sys, os; sys.path.insert(0, os.path.abspath(".")); print(__import__("${project}").__version__)')
 
@@ -8,23 +9,28 @@ list help:
 
 .PHONY: format
 format:
-	@$(PYTHON) -m black *.py ./pprintjson/*.py
+	@$(PYTHON) -m black $(module) $(ARGS)
+
+.PHONY: format-check
+format-check:
+	@$(MAKE) format ARGS="--check"
+
+.PHONY: lint
+lint:
+	@$(PYTHON) -m flake8 --max-line-length 100 $(module)
 
 .PHONY: build
 build: clean
 	@rm -rf ./dist/*
 	@$(PYTHON) setup.py sdist bdist_wheel
 
-.PHONY: test-setup
-test-setup:
-	@pyenv install -s 3.6.10
-	@pyenv install -s 3.7.7
-	@pyenv install -s 3.8.2
-
 .PHONY: test
-test: test-setup
-	@pyenv local 3.6.10 3.7.7 3.8.2
-	@$(PYTHON) -m tox
+test:
+	@$(PYTHON) -m pytest $(module) $(ARGS)
+
+.PHONY: test-cov
+test-cov:
+	@$(MAKE) test --cov=api_tools --cov-report=html --cov-report=term --show-capture=all
 
 .PHONY: clean
 clean:
@@ -34,16 +40,13 @@ clean:
 
 .PHONY: check
 check:
-	@twine check dist/*
-
-.PHONY: upload-test
-upload-test: test clean build check
-	@twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+	@$(PYTHON) -m twine check dist/*
 
 .PHONY: tag
 tag:
 ifeq (,$(shell git tag --list | grep "${version}"))
 	@git tag "v${version}"
+	@git push --tags
 endif
 
 .PHONY: release
@@ -56,6 +59,18 @@ ifdef version
 	--data "{\"tag_name\": \"v${version}\",\"target_commitish\": \"master\",\"name\": \"v${version}\",\"draft\": false,\"prerelease\": false}"
 endif
 
-.PHONY: upload
-publish upload: test clean build check
-	@twine upload dist/*
+.PHONY: install
+install:
+	@$(PYTHON) -m pip install --force-reinstall "${project}"
+
+.PHONY: install-test
+install-test:
+	@$(PYTHON) -m pip install --force-reinstall --index-url https://test.pypi.org/simple "${project}"
+
+.PHONY: upload publish
+publish upload: test clean build check release
+	@$(PYTHON) -m twine upload dist/*
+
+.PHONY: upload-test
+upload-test: test clean build check
+	@$(PYTHON) -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
